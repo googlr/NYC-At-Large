@@ -1,0 +1,72 @@
+1. Validation of date and time
+In the data, we have the following date and time columns:
+CMPLNT_FR_DT 
+CMPLNT_FR_TM 
+CMPLNT_TO_DT
+CMPLNT_TO_TM
+RPT_DT
+
+In order to make sure the value of date and time columns are valid, we incorporated the funtion in Python "time" module.
+time.strptime(string[, format]) 
+It parse a string representing a time according to a format. If string cannot be parsed according to the given format, or if it has excess data after parsing, ValueError is raised.
+
+Of all the 5 columns of date and time, only PRT_DT has no empty value. Thus we use it as a example to check the validation of the data.
+
+
+def validate_date( s ):
+    try:
+        valid_date = time.strptime( s, '%m/%d/%Y')
+        return True
+    except ValueError:
+        return False 
+
+def validate_time( s ):
+    try:
+        valid_date = time.strptime( s, '%H:%M:%S')
+        return True
+    except ValueError:
+        return False
+
+valid_prt_dt = data.filter(lambda x: validate_date(x[5])==True )
+
+
+
+In the result, the original data has 5580035 rows. After filtering invalid data, we still have 5580035 rows. In conclusion, the RPT_DT column has no invalid value. For all the other columns, we could use the same funtion to filter invalid values.
+
+2. Validation of the address
+In the data we have the following columns on location of the incident:
+BORO_NM
+ADDR_PCT_CD
+LOC_OF_OCCUR_DESC
+PREM_TYP_DESC
+PARKS_NM
+HADEVELOPT
+X_COORD_CD
+Y_COORD_CD
+Latitude
+Longitude
+
+Nothing breaks our hearts more than the fact that all the columns could be empty. 
+
+Geocoding And Reverse Geocoding
+According to WGS84 documents, "the coordinate origin of WGS 84 is meant to be located at the Earth's center of mass; the error is believed to be less than 2 cm". Thus we decide to use the (Latitude, Longitude) information in the data to acquire a detailed precise address for validation and further analysis.
+
+Here we use pygeocoder, a wrapper for Google's geo-API, to both geocode and reverse geocode. To reverse geocode, we feed (latitude, longitude) pairs into pygeocoder's reverse_geocoder function.
+
+def reverse_geocoding(lat, lng):
+    # "results" contains an array of geocoded address information and geometry information.
+    # Generally, only one entry in the "results" array is returned for address lookups,
+    # though the geocoder may return several results when address queries are ambiguous.
+    results = Geocoder.reverse_geocode(float(lat), float(lng))
+    # (if applicable)
+    geo_address.append( results[0] )
+    geo_street_number.append( results[0].street_number )
+    geo_route.append( results[0].route )
+    geo_locality.append( results[0].locality )
+    geo_administrative_area_level_2.append( results[0].administrative_area_level_2 )
+    geo_administrative_area_level_1.append( results[0].administrative_area_level_1 )
+    geo_country.append( results[0].country )
+    geo_postal_code.append( results[0].postal_code )
+
+Through the look-up of (latitude, longitude), we could get the address information such as street_number, route, neighborhood, sublocality, administrative_area_level_2, administrative_area_level_1, country, postal_code, when they are available.
+
