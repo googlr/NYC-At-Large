@@ -1,10 +1,10 @@
 # Login to Dumbo
 
 # Set up environment:
-# module load python/gnu/3.4.4
-# export PYSPARK_PYTHON=/share/apps/python/3.4.4/bin/python
-# export PYTHONHASHSEED=0
-# export SPARK_YARN_USER_ENV=PYTHONHASHSEED=0
+module load python/gnu/3.4.4
+export PYSPARK_PYTHON=/share/apps/python/3.4.4/bin/python
+export PYTHONHASHSEED=0
+export SPARK_YARN_USER_ENV=PYTHONHASHSEED=0
 
 # Install pygeocoder package
 # $ pip install pygeocoder
@@ -74,6 +74,7 @@ def reverse_geocoding(lat, lng):
 	# Generally, only one entry in the "results" array is returned for address lookups,
 	# though the geocoder may return several results when address queries are ambiguous.
 	results = Geocoder.reverse_geocode(float(lat), float(lng))
+	# raise GeocoderError: Error OVER_QUERY_LIMIT
 	# (if applicable)
 	geo_address.append( results[0] )
 	geo_street_number.append( results[0].street_number )
