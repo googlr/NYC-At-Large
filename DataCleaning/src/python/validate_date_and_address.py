@@ -86,8 +86,8 @@ def reverse_geocoding(lat, lng):
 	geo_postal_code.append( results[0].postal_code )
 	return True
 
-
-data_with_lat_lng = data.filter(lambda x: x[21] != '' and x[22] != '').filter(lambda x: reverse_geocoding(x[21], x[22])).collect()
+# could exceed the rate-limit of Google Maps API
+# data_with_lat_lng = data.filter(lambda x: x[21] != '' and x[22] != '').filter(lambda x: reverse_geocoding(x[21], x[22])).collect()
 # Append address to dataframe
 
 
