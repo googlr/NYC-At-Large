@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['CMPLNT_FR_HOUR','COUNT'],
+			['00',265946],
+			['01',193113],
+			['02',154829],
+			['03',129980],
+			['04',113713],
+			['05',79355],
+			['06',80611],
+			['07',114881],
+			['08',186771],
+			['09',206387],
+			['10',213513],
+			['11',218654],
+			['12',306824],
+			['13',262406],
+			['14',297073],
+			['15',336761],
+			['16',319292],
+			['17',319246],
+			['18',328863],
+			['19',318972],
+			['20',316485],
+			['21',288535],
+			['22',273572],
+			['23',253302],
+			['24',903],
+			['',48]
+        ]);
+
+        var options = {
+          title: 'Distribution of Complaint, by Hour',
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
