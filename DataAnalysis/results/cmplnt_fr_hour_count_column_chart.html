@@ -9,30 +9,30 @@ google.charts.setOnLoadCallback(drawTrendlines);
 function drawTrendlines() {
       var data = google.visualization.arrayToDataTable([
           ['CMPLNT_FR_HOUR','COUNT'],
-			['00',265946],
-			['01',193113],
-			['02',154829],
-			['03',129980],
-			['04',113713],
-			['05',79355],
-			['06',80611],
-			['07',114881],
-			['08',186771],
-			['09',206387],
-			['10',213513],
-			['11',218654],
-			['12',306824],
-			['13',262406],
-			['14',297073],
-			['15',336761],
-			['16',319292],
-			['17',319246],
-			['18',328863],
-			['19',318972],
-			['20',316485],
-			['21',288535],
-			['22',273572],
-			['23',253302]//,
+			[{v: [0,  0], f: '0 am'},265946],
+			[{v: [1,  0], f: '1 am'},193113],
+			[{v: [2,  0], f: '2 am'},154829],
+			[{v: [3,  0], f: '3 am'},129980],
+			[{v: [4,  0], f: '4 am'},113713],
+			[{v: [5,  0], f: '5 am'},79355],
+			[{v: [6,  0], f: '6 am'},80611],
+			[{v: [7,  0], f: '7 am'},114881],
+			[{v: [8,  0], f: '8 am'},186771],
+			[{v: [9,  0], f: '9 am'},206387],
+			[{v: [10,  0], f: '10 am'},213513],
+			[{v: [11,  0], f: '11 am'},218654],
+			[{v: [12,  0], f: '12 pm'},306824],
+			[{v: [13,  0], f: '1 pm'},262406],
+			[{v: [14,  0], f: '2 pm'},297073],
+			[{v: [15,  0], f: '3 pm'},336761],
+			[{v: [16,  0], f: '4 pm'},319292],
+			[{v: [17,  0], f: '5 pm'},319246],
+			[{v: [18,  0], f: '6 pm'},328863],
+			[{v: [19,  0], f: '7 pm'},318972],
+			[{v: [20,  0], f: '8 pm'},316485],
+			[{v: [21,  0], f: '9 pm'},288535],
+			[{v: [22,  0], f: '10 pm'},273572],
+			[{v: [23,  0], f: '11 pm'},253302]//,
 			//['24',903],
 			//['',48]
         ]);
@@ -41,16 +41,20 @@ function drawTrendlines() {
       var options = {
         title: 'Distribution of Complaint, by Hour Throughout the Day',
         trendlines: {
-          0: {type: 'linear', lineWidth: 5, opacity: .3},
-          1: {type: 'exponential', lineWidth: 10, opacity: .3}
+          0: {type: 'polynomial',
+              degree: 4, 
+              lineWidth: 5, 
+              opacity: .3},
+          //1: {type: 'exponential', lineWidth: 10, opacity: .3}
         },
         hAxis: {
           title: 'Time of Day',
           format: 'h:mm a',
-          viewWindow: {
-            min: [7, 30, 0],
-            max: [17, 30, 0]
-          }
+          // viewWindow: {
+          //   min: [7, 30, 0],
+          //   max: [17, 30, 0]
+          // },
+          minValue: 0, maxValue: 23
         },
         vAxis: {
           title: 'Complaints Reported'
