@@ -1,0 +1,61 @@
+<html>
+  <head>
+     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <div id="chart_div"></div>
+    <script type="text/javascript">
+      google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawTrendlines);
+
+function drawTrendlines() {
+      var data = google.visualization.arrayToDataTable([
+          ['CMPLNT_FR_DT_YEAR','COUNT'],
+[1,454690],
+[2,398039],
+[3,461557],
+[4,455745],
+[5,490070],
+[6,482081],
+[7,497806],
+[8,498578],
+[9,477888],
+[10,486605],
+[11,442196],
+[12,434125]
+        ]);
+
+
+      var options = {
+        title: 'Distribution of Complaints by Month Throughout the Year',
+        trendlines: {
+          0: {type: 'polynomial',
+              degree: 4,  
+              lineWidth: 5, 
+              opacity: .3},
+        },
+        hAxis: {
+          title: 'Month',
+          //format: 'yyyy',
+           // viewWindow: {
+           //   min: [2006,  0],
+           //   max: [2017, 0]
+           // },
+          //minValue: 0, 
+          ticks: [0,1,2,3,4,5,6,7,8,9,10,11,12]
+          //maxValue: 2016
+        },
+        vAxis: {
+          title: 'Complaints Reported',
+          //logscale: true,
+          minValue: 0
+        }
+      };
+
+      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 900px; height: 1000px;"></div>
+  </body>
+</html>
