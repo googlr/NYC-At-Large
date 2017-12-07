@@ -14,7 +14,7 @@ crime_df_invalid_value.registerTempTable("crime_invalid_value")
 def invalidEachCol():
 	num=[]
 	for x in range(0,24):
-		num_col=sqlContext.sql("SELECT count(*) FROM crime_invalid_value WHERE "+attributes[x]+"='N/A' or "+attributes[x]+"='NULL' or "+attributes[x]+"='USPECIFIED' or "+attributes[x]+"='NULL'").collect()[0][0]
+		num_col=sqlContext.sql("SELECT count(*) FROM crime_invalid_value WHERE "+header[x]+"='N/A' or "+header[x]+"='NULL' or "+header[x]+"='USPECIFIED' or "+header[x]+"='NULL'").collect()[0][0]
 		num.append(num_col)
 	return num
 invalid_num=invalidEachCol()
