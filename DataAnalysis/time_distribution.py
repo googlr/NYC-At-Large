@@ -5,6 +5,12 @@ from pyspark.sql.functions import substring
 
 # Time Distribution
 ## CMPLNT_FR_TM
+#>>> types = [f.dataType for f in crime_df.schema.fields]
+#>>> types
+# [StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType]
+
+
+
 hour = sqlContext.sql("SELECT substring(CMPLNT_FR_TM,1,2) AS CMPLNT_FR_HOUR FROM crime ")
 hour.registerTempTable("crime_df_hour")
 
