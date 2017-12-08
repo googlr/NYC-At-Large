@@ -2,6 +2,7 @@
 import csv
 import pandas
 csvfile = sc.textFile('/user/cw2661/proj/crime.csv')
+# csvfile = sc.textFile('/user/xg626/NYPD_Complaint_Data_Historic.csv')
 crime = csvfile.map(lambda line: next(csv.reader(line.splitlines(), skipinitialspace=True)))
 crime.first()
 # RDD to DataFrame
