@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Complex icons</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+
+    <div id="map"></div>
+    <script>
+
+      // The following example creates complex markers to indicate beaches near
+      // Sydney, NSW, Australia. Note that the anchor is set to (0,32) to correspond
+      // to the base of the flagpole.
+
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 11,
+          center: {lat: 40.692576,
+            lng: -73.978746},
+          mapTypeId: 'satellite'
+          // center: {lat: -33.9, lng: 151.2}
+        });
+
+        setMarkers(map);
+      }
+
+      // Data for the markers consisting of a name, a LatLng and a zIndex for the
+      // order in which these markers should display on top of each other.
+      var beaches = [
+        ['Bondi Beach', -33.890542, 151.274856, 4],
+        ['Coogee Beach', -33.923036, 151.259052, 5],
+        ['Cronulla Beach', -34.028249, 151.157507, 3],
+        ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
+        ['Maroubra Beach', -33.950198, 151.259302, 1]
+      ];
+
+      function getPoints() {
+        return [
+new google.maps.LatLng(40.764134,-73.829959),
+new google.maps.LatLng(40.710841,-73.957797),
+new google.maps.LatLng(40.860462,-73.899405),
+new google.maps.LatLng(40.550575,-74.160911),
+new google.maps.LatLng(40.635478,-73.945996),
+new google.maps.LatLng(40.793839,-73.970148),
+new google.maps.LatLng(40.667978,-73.745274),
+new google.maps.LatLng(40.659047,-73.882472),
+new google.maps.LatLng(40.754053,-73.989256),
+new google.maps.LatLng(40.626709,-74.026917),
+new google.maps.LatLng(40.712558,-73.774997),
+new google.maps.LatLng(40.842601,-73.938303),
+new google.maps.LatLng(40.748121,-73.888372),
+new google.maps.LatLng(40.844731,-73.840241),
+new google.maps.LatLng(40.823605,-73.892014),
+new google.maps.LatLng(40.638570,-74.082384),
+new google.maps.LatLng(40.699065,-73.825890),
+new google.maps.LatLng(40.581576,-73.832260),
+new google.maps.LatLng(40.692512,-73.986802),
+new google.maps.LatLng(40.601362,-73.757107),
+new google.maps.LatLng(40.628475,-74.163075),
+new google.maps.LatLng(40.605666,-74.000707),
+new google.maps.LatLng(40.809253,-73.952807),
+new google.maps.LatLng(40.677093,-73.915834),
+new google.maps.LatLng(40.873563,-73.832238),
+new google.maps.LatLng(40.715774,-74.004541),
+new google.maps.LatLng(40.653743,-73.955516),
+new google.maps.LatLng(40.803563,-73.937838),
+new google.maps.LatLng(40.582561,-73.964245),
+new google.maps.LatLng(40.512317,-74.240352),
+new google.maps.LatLng(40.771790,-73.983916),
+new google.maps.LatLng(40.679995,-73.952916),
+new google.maps.LatLng(40.753837,-73.767111),
+new google.maps.LatLng(40.774855,-73.954486),
+new google.maps.LatLng(40.589693,-74.090494),
+new google.maps.LatLng(40.749069,-73.943525),
+new google.maps.LatLng(40.735663,-73.866319),
+new google.maps.LatLng(40.827390,-73.873506),
+new google.maps.LatLng(40.869277,-73.861499),
+new google.maps.LatLng(40.680065,-73.846065),
+new google.maps.LatLng(40.843205,-73.909225),
+new google.maps.LatLng(40.671452,-73.995188),
+new google.maps.LatLng(40.631004,-74.138620),
+new google.maps.LatLng(40.813076,-73.920191),
+new google.maps.LatLng(40.701855,-73.798087),
+new google.maps.LatLng(40.639372,-73.899531),
+new google.maps.LatLng(40.677030,-73.778836),
+new google.maps.LatLng(40.667768,-73.934918),
+new google.maps.LatLng(40.708916,-73.894831),
+new google.maps.LatLng(40.697468,-73.748980),
+new google.maps.LatLng(40.859206,-73.923834),
+new google.maps.LatLng(40.637871,-73.970382),
+new google.maps.LatLng(40.700653,-73.942617),
+new google.maps.LatLng(40.746830,-73.721290),
+new google.maps.LatLng(40.577822,-73.991760),
+new google.maps.LatLng(40.738206,-73.985598),
+new google.maps.LatLng(40.620336,-73.923591),
+new google.maps.LatLng(40.718370,-73.851929),
+new google.maps.LatLng(40.875685,-73.882061),
+new google.maps.LatLng(40.592385,-73.799488),
+new google.maps.LatLng(40.745464,-73.914298),
+new google.maps.LatLng(40.770778,-73.911333),
+new google.maps.LatLng(40.842961,-73.863076),
+new google.maps.LatLng(40.797112,-73.880856),
+new google.maps.LatLng(40.721099,-73.985428),
+new google.maps.LatLng(40.730456,-73.809911),
+new google.maps.LatLng(40.699505,-73.915061),
+new google.maps.LatLng(40.614233,-74.078257),
+new google.maps.LatLng(40.606712,-74.130261),
+new google.maps.LatLng(40.683198,-73.973128),
+new google.maps.LatLng(40.828300,-73.816671),
+new google.maps.LatLng(40.677780,-73.813425),
+new google.maps.LatLng(40.568445,-74.115265),
+new google.maps.LatLng(40.822577,-73.854054),
+new google.maps.LatLng(40.791532,-73.944741),
+new google.maps.LatLng(40.628882,-73.994413),
+new google.maps.LatLng(40.539015,-74.207151),
+new google.maps.LatLng(40.633021,-74.114502),
+new google.maps.LatLng(40.891021,-73.854609),
+new google.maps.LatLng(40.881862,-73.905360),
+new google.maps.LatLng(40.846920,-73.887163),
+new google.maps.LatLng(40.687401,-73.931978),
+new google.maps.LatLng(40.832918,-73.920905),
+new google.maps.LatLng(40.602568,-73.979845),
+new google.maps.LatLng(40.588858,-74.166346),
+new google.maps.LatLng(40.724656,-73.948592),
+new google.maps.LatLng(40.823733,-73.944032),
+new google.maps.LatLng(40.820227,-73.905791),
+new google.maps.LatLng(40.769455,-73.796524),
+new google.maps.LatLng(40.763840,-73.928388),
+new google.maps.LatLng(40.655963,-73.921007),
+new google.maps.LatLng(40.591811,-73.940222),
+new google.maps.LatLng(40.644229,-74.009498),
+new google.maps.LatLng(40.667706,-73.900501),
+new google.maps.LatLng(40.677725,-73.872274),
+new google.maps.LatLng(40.611756,-73.957005),
+new google.maps.LatLng(40.720455,-73.742350),
+new google.maps.LatLng(40.738361,-74.001277),
+new google.maps.LatLng(40.755498,-73.868450),
+new google.maps.LatLng(40.759465,-73.971342)
+        ];
+      }
+
+
+      function setMarkers(map) {
+        // Adds markers to the map.
+
+        // Marker sizes are expressed as a Size of X,Y where the origin of the image
+        // (0,0) is located in the top left of the image.
+
+        // Origins, anchor positions and coordinates of the marker increase in the X
+        // direction to the right and in the Y direction down.
+        var image = {
+          url: './police-car.png',
+          // This marker is 20 pixels wide by 32 pixels high.
+          size: new google.maps.Size(24, 24),
+          // The origin for this image is (0, 0).
+          origin: new google.maps.Point(0, 0),
+          // The anchor for this image is the base of the flagpole at (0, 32).
+          anchor: new google.maps.Point(0, 24)
+        };
+        
+        data = getPoints();
+
+        for (var i = 0; i < data.length; i++) {
+          var point = data[i];
+          var marker = new google.maps.Marker({
+            position: point,
+            map: map,
+            icon: image,
+          });
+        }
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEb2ZmBrrcVlbWF277DxfQwWFx_PfydJ8&callback=initMap">
+    </script>
+  </body>
+</html>
