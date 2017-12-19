@@ -1,0 +1,65 @@
+<html>
+
+	<head>
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<script src="node_modules/d3/build/d3.min.js"></script>
+		<script src="node_modules/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript">
+			google.charts.load('current', {
+				'packages': ['corechart']
+			});
+			google.charts.setOnLoadCallback(drawChart);
+
+			function drawChart() {
+				d3.csv("merge.csv", function(error, filedata) {
+					if(error) throw error;
+					var arr = [];
+					arr.push(['Count', 'Max Temperature']);
+					filedata.forEach(function(d) {
+						d["count"] = +d["count"];
+						d["TMAX"] = +d["TMAX"];
+						arr.push([d["count"], d["TMAX"]]);
+					});
+					
+					var data = google.visualization.arrayToDataTable(arr);
+
+				var options = {
+					title: 'Count vs. Max Temperature',
+					hAxis: {
+						title: 'Count',
+						minValue: d3.min(filedata, function(d) {
+							return d["count"];
+						}),
+						maxValue: d3.max(filedata, function(d) {
+							return d["count"];
+						})
+					},
+					vAxis: {
+						title: 'Max Temperature',
+						minValue: d3.min(filedata, function(d) {
+							return d["TMAX"];
+						}),
+						maxValue: d3.max(filedata, function(d) {
+							return d["TMAX"];
+						})
+					},
+					legend: 'none'
+				};
+
+				var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+
+				chart.draw(data, options);
+					
+					
+				});
+
+				
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="chart_div" style="width: 900px; height: 500px;"></div>
+	</body>
+
+</html>

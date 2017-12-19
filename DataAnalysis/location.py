@@ -22,6 +22,12 @@ year_count.show(100)
 year_2006 = sqlContext.sql("SELECT Latitude, Longitude, Y  FROM crime_location WHERE Y = 2006")
 year_2006.toPandas().to_csv('year_2006.csv')
 
+year_2011 = sqlContext.sql("SELECT Latitude, Longitude, Y  FROM crime_location WHERE Y = 2011")
+year_2011.toPandas().to_csv('year_2011.csv')
+
+year_2016 = sqlContext.sql("SELECT Latitude, Longitude, Y  FROM crime_location WHERE Y = 2016")
+year_2016.toPandas().to_csv('year_2016.csv')
+
 # get felony
 law_count = sqlContext.sql("SELECT LAW_CAT_CD, count(*) FROM crime GROUP BY LAW_CAT_CD")
 law_count.show()
@@ -33,3 +39,8 @@ VIOLATION_2015 = sqlContext.sql("SELECT Latitude, Longitude, Y  FROM crime_locat
 FELONY_2015.toPandas().to_csv('FELONY_2015.csv')
 MISDEMEANOR_2015.toPandas().to_csv('MISDEMEANOR_2015.csv')
 VIOLATION_2015.toPandas().to_csv('VIOLATION_2015.csv')
+
+# count missing 195868
+sqlContext.sql("SELECT COUNT(*) FROM crime WHERE Lat_Lon = ''").show(10)
+# count all 5580035
+sqlContext.sql("SELECT COUNT(*) FROM crime").show(10)
