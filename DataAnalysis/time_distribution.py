@@ -10,7 +10,8 @@ from pyspark.sql.functions import substring
 # [StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType, StringType]
 
 
-
+# pyspark.sql.functions.substring(str, pos, len)
+# http://spark.apache.org/docs/latest/api/python/pyspark.sql.html?highlight=substring#pyspark.sql.types.StringType
 hour = sqlContext.sql("SELECT substring(CMPLNT_FR_TM,1,2) AS CMPLNT_FR_HOUR FROM crime ")
 hour.registerTempTable("crime_df_hour")
 
@@ -18,5 +19,5 @@ cmplnt_fr_hour_count = sqlContext.sql("SELECT CMPLNT_FR_HOUR, COUNT(*) AS count 
 cmplnt_fr_hour_count.toPandas().to_csv('cmplnt_fr_hour_count.csv')
 
 # days
-days = sqlContext.sql("SELECT substring(RPT_DT,1,2) AS MONTH, substring(RPT_DT,4,5) AS DAY, substring(RPT_DT,7,10) AS YEAR, COUNT(*) FROM crime GROUP BY RPT_DT")
+days = sqlContext.sql("SELECT substring(RPT_DT,1,2) AS MONTH, substring(RPT_DT,4,2) AS DAY, substring(RPT_DT,7,4) AS YEAR, COUNT(*) FROM crime GROUP BY RPT_DT")
 days.toPandas().to_csv('cmplnt_fr_days_count.csv')
