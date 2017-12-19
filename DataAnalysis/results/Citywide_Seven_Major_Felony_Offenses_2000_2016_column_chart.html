@@ -1,0 +1,69 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <div id="chart_div" style="width: 800px; height: 500px;"></div>
+    <script type="text/javascript">
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawTrendlines);
+
+function drawTrendlines() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Year');
+      data.addColumn('number', 'MURDER & NON-NEGL. MANSLAUGHTE');
+      data.addColumn('number', 'RAPE');
+      data.addColumn('number', 'ROBBERY');
+      data.addColumn('number', 'FELONY ASSAULT');
+      data.addColumn('number', 'BURGLARY');
+      data.addColumn('number', 'GRAND LARCENY');
+      data.addColumn('number', 'GRAND LARCENY OF MOTOR VEHICLE');
+      
+
+      
+
+      var year = ['2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016'];
+      
+      var col1 = [673, 649, 587, 597, 570, 539, 596, 496, 523, 471, 536, 515, 419, 335, 333, 352, 335 ];
+      var col2 = [2068, 1981, 2144, 2070, 1905, 1858, 1525, 1351, 1299, 1205, 1373, 1420, 1445, 1378, 1352, 1438, 1438 ];
+      var col3 = [32562, 28202, 27229, 25989, 24373, 24722, 23739, 21809, 22401, 18601, 19486, 19717, 20144, 19128, 16539, 16931, 15500 ];
+      var col4 = [25924, 23453, 21147, 19139, 18622, 17750, 17309, 17493, 16284, 16773, 16956, 18482, 19381, 20297, 20207, 20270, 20847 ];
+      var col5 = [38352, 32763, 31275, 29110, 26976, 24117, 23143, 21762, 20725, 19430, 18600, 18720, 19168, 17429, 16765, 15125, 12990 ];
+      var col6 = [49631, 46329, 45771, 46751, 48763, 48243, 46625, 44924, 44242, 39580, 37835, 38501, 42497, 45368, 43862, 44005, 44279 ];
+      var col7 = [35442, 29531, 26656, 23413, 20884, 18246, 15745, 13174, 12482, 10670, 10329, 9314, 8093, 7400, 7664, 7332, 6327 ];
+
+      for(var i = 0; i < year.length; i++){
+        data.addRows( [ [ year[i], col1[i], col2[i],col3[i],col4[i],col5[i],col6[i],col7[i] ] ] );
+      }
+      
+
+      var options = {
+        title: 'Citywide Seven Major Felony Offenses 2000-2016',
+        // trendlines: {
+        //   0: {type: 'linear', lineWidth: 5, opacity: .3},
+        //   1: {type: 'exponential', lineWidth: 10, opacity: .3}
+        // },
+        hAxis: {
+          title: 'Year',
+          // format: 'h:mm a',
+          // viewWindow: {
+          //   min: [7, 30, 0],
+          //   max: [17, 30, 0]
+          // }
+        },
+        vAxis: {
+          title: 'Total Occurrence'
+        },
+
+        width: 1200
+
+      };
+
+      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+    </script>
+  </head>
+  <body>
+    <!-- /*<div id="columnchart_material" style="width: 800px; height: 500px;"></div>*/ -->
+  </body>
+</html>
+

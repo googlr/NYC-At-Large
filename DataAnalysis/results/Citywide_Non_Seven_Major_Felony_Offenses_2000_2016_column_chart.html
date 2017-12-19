@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <div id="chart_div" style="width: 800px; height: 500px;"></div>
+    <script type="text/javascript">
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawTrendlines);
+
+function drawTrendlines() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Year');
+      data.addColumn('number', 'FELONY POSSESSION OF STOLEN PROPERTY');
+      data.addColumn('number', 'FORGERY/THEFT_FRAUD/IDENTITY THEFT');
+      data.addColumn('number', 'ARSON');
+      data.addColumn('number', 'FELONY SEX CRIMES (3)');
+      data.addColumn('number', 'FELONY DANGEROUS DRUGS (1)');
+      data.addColumn('number', 'FELONY DANGEROUS WEAPONS (2)');
+      data.addColumn('number', 'FEL. CRIMINAL MISCHIEF & RELATED OFFENSES');
+      data.addColumn('number', 'OTHER FELONIES (4)');
+      
+
+      
+
+      var year = ['2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016'];
+      
+      var col1 = [2194, 2114, 1976, 1545, 1358, 1250, 1175, 1073, 1016, 823, 864, 823, 711, 689, 1090, 904, 769 ];
+var col2 = [5714, 5594, 5859, 8112, 12984, 12896, 12579, 12075, 12216, 10225, 10055, 9876, 10233, 9493, 9520, 10400, 11079 ];
+var col3 = [3189, 2681, 1902, 1492, 1789, 1831, 1679, 1527, 1896, 1474, 1467, 1264, 1253, 1187, 1205, 1026, 802 ];
+var col4 = [1839, 1831, 1513, 1295, 1263, 1162, 1096, 1031, 909, 914, 1053, 1028, 1380, 1073, 1135, 1152, 1336 ];
+var col5 = [38088, 30743, 29692, 24076, 25824, 27391, 29516, 31459, 28936, 26025, 22913, 21305, 19680, 19571, 17113, 15279, 14712 ];
+var col6 = [2958, 3030, 2804, 2511, 2987, 3748, 4315, 5004, 5263, 5952, 5413, 5037, 4979, 5155, 4605, 4848, 5465 ];
+var col7 = [12934, 16026, 13291, 8400, 8074, 7776, 7605, 7090, 7003, 6397, 6006, 6374, 6737, 7468, 8466, 9253, 9966 ];
+var col8 = [13945, 13059, 13956, 13786, 12454, 11800, 11063, 11699, 11719, 11950, 11616, 11533, 11929, 13014, 13735, 13658, 14217 ];
+
+      for(var i = 0; i < year.length; i++){
+        data.addRows( [ [ year[i], col1[i], col2[i],col3[i],col4[i],col5[i],col6[i],col7[i],col8[i] ] ] );
+      }
+      
+
+      var options = {
+        title: 'Citywide Non-Seven Major Felony Offenses 2000-2016',
+        // trendlines: {
+        //   0: {type: 'linear', lineWidth: 5, opacity: .3},
+        //   1: {type: 'exponential', lineWidth: 10, opacity: .3}
+        // },
+        hAxis: {
+          title: 'Year',
+          // format: 'h:mm a',
+          // viewWindow: {
+          //   min: [7, 30, 0],
+          //   max: [17, 30, 0]
+          // }
+        },
+        vAxis: {
+          title: 'Total Occurrence'
+        },
+
+        width: 1200
+
+      };
+
+      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+    </script>
+  </head>
+  <body>
+    <!-- /*<div id="columnchart_material" style="width: 800px; height: 500px;"></div>*/ -->
+  </body>
+</html>
+

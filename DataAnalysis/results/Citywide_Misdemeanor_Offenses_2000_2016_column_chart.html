@@ -1,0 +1,89 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <div id="chart_div" style="width: 800px; height: 500px;"></div>
+    <script type="text/javascript">
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawTrendlines);
+
+function drawTrendlines() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Year');
+      data.addColumn('number', 'MISDEMEANOR POSSESSION OF STOLEN PROPERTY');
+      data.addColumn('number', 'MISDEMEANOR SEX CRIMES (4)');
+      data.addColumn('number', 'MISDEMEANOR DANGEROUS DRUGS (1)');
+      data.addColumn('number', 'MISDEMEANOR DANGEROUS WEAPONS (5)');
+      data.addColumn('number', 'PETIT LARCENY');
+      data.addColumn('number', 'ASSAULT 3 & RELATED OFFENSES');
+      data.addColumn('number', 'INTOXICATED & IMPAIRED DRIVING');
+      data.addColumn('number', 'VEHICLE AND TRAFFIC LAWS');
+      data.addColumn('number', 'MISD. CRIMINAL MISCHIEF & RELATED OFFENSES');
+      data.addColumn('number', 'CRIMINAL TRESPASS');
+      data.addColumn('number', 'UNAUTHORIZED USE OF A VEHICLE');
+      data.addColumn('number', 'OFFENSES AGAINST THE PERSON (7)');
+      data.addColumn('number', 'OFFENSES AGAINST PUBLIC ADMINISTRATION (2)');
+      data.addColumn('number', 'ADMINISTRATIVE CODE (6)');
+      data.addColumn('number', 'FRAUDS (3)');
+      data.addColumn('number', 'AGGRAVATED HARASSMENT 2');
+      data.addColumn('number', 'OTHER MISDEMEANORS (8)');
+
+      
+
+      var year = ['2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016'];
+      // var col1 = [105534, 107408, 93749, 83805, 79271, 73917, 68862, 65316, 61159,58600, 57376, 54216, 57045, 57654, 61972, 62121, 65938];
+      // var col2 = [3614, 3593, 3510, 4187, 4299, 4126, 4741, 4501, 4371, 5094, 4291, 4582, 4086, 3383, 3125, 2213, 1661];
+
+      var col1 = [1072, 1382, 1577, 1781, 1853, 1827, 2009, 1880, 1811, 2023, 2240, 2853, 2662, 2337, 1469, 1145, 932 ];
+var col2 = [4394, 4584, 4218, 3978, 4019, 3937, 4803, 4393, 4289, 4459, 4512, 4632, 4480, 4064, 4246, 4555, 4947 ];
+var col3 = [96590, 75766, 77048, 70185, 59671, 61076, 65945, 77212, 76286, 79302, 79908, 80462, 67898, 55529, 52835, 38471, 35982 ];
+var col4 = [3387, 3718, 4056, 4651, 5173, 6170, 7097, 7734, 7654, 8367, 8716, 8601, 7136, 6522, 6166, 5685, 5006 ];
+var col5 = [93785, 92941, 90456, 85494, 84047, 82131, 81031, 80237, 83113, 80928, 81522, 81160, 82947, 85602, 85121, 81598, 81274 ];
+var col6 = [57304, 57753, 52469, 51298, 52158, 52408, 52169, 51429, 50310, 50216, 52716, 50972, 54495, 53738, 53847, 42654, 42422 ];
+var col7 = [4162, 4099, 4486, 5203, 7294, 7372, 7601, 8659, 8284, 7700, 6691, 6027, 6723, 8238, 7875, 5933, 5964 ];
+var col8 = [13717, 11197, 8905, 7916, 7112, 6275, 5989, 5542, 5228, 6178, 6624, 5802, 5577, 6106, 5841, 6266, 6580 ];
+var col9 = [48791, 44954, 43025, 43222, 42550, 42304, 45832, 48956, 49099, 45770, 44930, 42995, 41024, 36765, 38793, 39606, 38893 ];
+var col10 = [14053, 11262, 11442, 13204, 12495, 13376, 14241, 16306, 18734, 20904, 19858, 18297, 15719, 13459, 14540, 11473, 9799 ];
+var col11 = [1811, 1976, 1816, 1530, 1510, 1351, 1305, 1312, 1170, 1181, 1274, 1285, 1416, 1491, 1704, 1601, 1809 ];
+var col12 = [1159, 1160, 1058, 957, 1216, 1148, 1145, 1287, 1149, 1122, 1205, 1207, 1248, 1380, 1334, 1293, 1225 ];
+var col13 = [8530, 9023, 8425, 8220, 8896, 9263, 10398, 10523, 10368, 11217, 11129, 11067, 10728, 10687, 10303, 9405, 8929 ];
+var col14 = [1630, 1557, 1266, 1121, 1097, 1151, 1021, 935, 1002, 1010, 975, 982, 1003, 1019, 1011, 985, 942 ];
+var col15 = [8545, 10267, 6452, 6917, 6132, 4900, 4682, 4384, 4795, 5155, 5422, 5180, 5254, 4936, 5331, 4788, 4640 ];
+var col16 = [42018, 42623, 38079, 35032, 35931, 34531, 33877, 33224, 31170, 30852, 30037, 27819, 27240, 26972, 19725, 20511, 21328 ];
+var col17 = [34457, 29641, 24248, 24762, 26570, 24429, 22429, 24603, 25944, 30381, 34133, 33767, 38814, 40505, 38230, 46879, 44253 ];
+      for(var i = 0; i < year.length; i++){
+        data.addRows( [ [ year[i], col1[i],col2[i],col3[i],col4[i],col5[i],col6[i],col7[i],col8[i],col9[i],col10[i],col11[i],col12[i],col13[i],col14[i],col15[i],col16[i],col17[i] ] ] );
+      }
+      
+
+      var options = {
+        title: 'Citywide Misdemeanor Offenses 2000-2016',
+        // trendlines: {
+        //   0: {type: 'linear', lineWidth: 5, opacity: .3},
+        //   1: {type: 'exponential', lineWidth: 10, opacity: .3}
+        // },
+        hAxis: {
+          title: 'Year',
+          // format: 'h:mm a',
+          // viewWindow: {
+          //   min: [7, 30, 0],
+          //   max: [17, 30, 0]
+          // }
+        },
+        vAxis: {
+          title: 'Total Occurrence'
+        },
+
+        width: 1200
+
+      };
+
+      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+    </script>
+  </head>
+  <body>
+    <!-- /*<div id="columnchart_material" style="width: 800px; height: 500px;"></div>*/ -->
+  </body>
+</html>
+
