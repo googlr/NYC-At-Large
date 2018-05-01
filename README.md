@@ -4,6 +4,9 @@ Of the three datasets provided, we choose the [NYPD Complaint Data Historic](htt
 
 For a quick overview of the data set, the dataset has 5,580,035 rows and 24 columns, including all valid felony, misdemeanor, and violation crimes reported to the New York City Police Department (NYPD) from 2006 to the end of last year (2016). The data is updated annually and the last update is May 1, 2017. A more detailed description could be found on the website of [NYC Open Data](https://opendata.cityofnewyork.us/).
 
+## Team
+  - [@WLSK801](https://github.com/wlsk801)
+  - [@googlr](https://github.com/googlr)
 
 ## Data Through Design
 
